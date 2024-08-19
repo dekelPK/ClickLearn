@@ -1,0 +1,437 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.311),
+      rgba(255, 255, 255, 0.635)
+    ),
+    url("images/main.webp");
+
+  background-size: cover;
+  padding: 20px 80px;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+}
+.topNavbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #003366;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 70px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.topNavbar button {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(58, 122, 199, 0.85); /* גוון כחול תואם לכפתורים */
+  color: white; /* צבע הטקסט */
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px; /* פינות עגולות לכפתורים */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* אפקט מעבר חלק */
+}
+
+.topNavbar button:hover {
+  background-color: rgba(
+    38,
+    92,
+    179,
+    1
+  ); /* צבע כחול כהה יותר במעבר על הכפתור */
+}
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+/* Header styling */
+.bodyindex header {
+  background-color: #003366b9;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  max-width: 800px;
+  padding: 20px;
+  margin: 20px auto;
+}
+
+header h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+.bodyindex {
+  padding: 10%;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Description section styling */
+.Desc {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.Desc p {
+  font-size: 1.1em;
+  text-align: right;
+  direction: rtl;
+  color: #555;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.5em;
+  }
+
+  .Desc p {
+    font-size: 1em;
+  }
+}
+
+#courses-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+  text-align: center;
+  padding: 20%;
+  padding-top: 20%;
+}
+
+.course-card {
+  width: 280px;
+  height: 280px;
+  overflow: hidden;
+  justify-content: center;
+  text-align: center;
+  border-radius: 20px;
+  animation: fade-in 0.4s ease-in forwards;
+  border: 0.2px solid rgb(0, 0, 0);
+  box-shadow: 1px 1px 20px 0 black;
+  margin: 5px;
+  background-size: cover;
+}
+
+.course-card:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.course-card h1 {
+  padding-top: 100px;
+  font-size: 3em;
+  margin: 0 0 10px;
+  color: #ffffff;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* הוספת צל לטקסט */
+  background-color: rgba(0, 0, 0, 0.259); /* רקע חצי שקוף מאחורי הטקסט */
+  padding: 10px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.lecture {
+  flex: 2;
+  padding: 20px;
+}
+
+.lecture h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.lecture p {
+  font-size: 16px;
+  color: #000000;
+  line-height: 1.6;
+}
+#PickedCourse {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  background-color: hsla(0, 0%, 100%, 0.235);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: "Luckiest Guy", cursive;
+  font-weight: 100;
+  font-style: normal;
+  margin: 100px;
+}
+
+#PickedCourse > div {
+  max-width: 600px;
+  width: 100%;
+}
+
+#name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center; /* מיקום במרכז */
+}
+
+#Desc {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  margin-bottom: 25px;
+  text-align: justify;
+}
+
+#CourseImage {
+  max-width: 100%;
+  border-radius: 10px; /* תמונה עם פינות מעוגלות */
+  margin-bottom: 25px;
+}
+
+#Topic {
+  color: #1976d2; /* כחול כהה יותר לטקסט */
+  padding: 7px 12px;
+  border-radius: 8px; /* עיגול קל של הקצוות */
+  margin-right: 12px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+#Buy-It {
+  background-color: #1976d2; /* כחול כהה יותר לכפתור */
+  color: #fff;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* מעבר צבע והגדלה */
+  display: block;
+  margin: 0 auto; /* מיקום במרכז */
+}
+
+#Buy-It:hover {
+  background-color: #1565c0; /* שינוי צבע בעת ריחוף */
+  transform: scale(1.05); /* הגדלה קלה בעת ריחוף */
+}
+
+#PickedCourse p {
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  color: #0d47a1; /* כחול כהה יותר כדי להדגיש את הטקסט */
+  font-weight: 600; /* עובי גופן מוגבר */
+
+  padding: 10px 15px; /* ריווח פנימי להבלטה */
+  border-radius: 8px; /* פינות מעוגלות */
+}
+.nameDesc{
+  background-color: #bbdefb;
+}
+/* עמוד לtopic*/
+.topic-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-top: 30px;
+  overflow-x: auto; /* גלילה אופקית */
+  padding: 10px;
+  white-space: nowrap; /* שמירה על רצף אופקי */
+}
+
+.topic-card {
+  flex: 0 0 auto;
+  background-color: #e3f2fd;
+  border-radius: 10px;
+  padding: 20px;
+  width: 250px; /* רוחב קבוע לכרטיסייה */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.topic-card h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #0d47a1;
+}
+
+.topic-card:hover {
+  transform: scale(1.05); /* אפקט הגדלה קל בהובר */
+}
+
+/* עיצוב לפס הגלילה */
+.topic-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.topic-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+}
+
+#TopicPage{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8); 
+  padding: 20px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); 
+  border-radius: 10px; 
+}
+
+#sidebar {
+  position: fixed;
+  top: 50px;
+  right: 0;
+  width: 230px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-right: 1px solid #ccc;
+  height: calc(100% - 50px);
+  overflow-y: auto;
+  box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+  padding-bottom: 20px;
+}
+
+#sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+#sidebar li {
+  margin: 10px 0;
+}
+
+#sidebar a:hover {
+  text-decoration: underline;
+}
+
+#TopicPage {
+  margin-left: 220px; /* משאיר מקום ל-sidebar */
+}
+#sidebar a {
+  text-decoration: none;
+  color: #007bff;
+  display: block; /* הופך את הקישור לבלוק שממלא את כל השורה */
+  padding: 10px; /* מרווח פנימי עבור הקישור */
+  width: 100%; /* ממלא את כל רוחב השורה */
+}
+
+.selected-topic {
+  font-weight: bold;
+  color: #0d47a1; /* צבע נבחר */
+  background-color: #bbdefb76; /* רקע כחול בהיר */
+  text-decoration: underline; /* קו תחתון לנושא הנבחר */
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin: 10%;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-container h1 {
+  text-align: center;
+  color: #0d47a1;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #007bff;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.tabs button.active {
+  border-bottom: 2px solid #0d47a1;
+  color: #0d47a1;
+}
+
+.form {
+  display: none;
+}
+
+.form.active {
+  display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="phone"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0d47a1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0a397d;
+}

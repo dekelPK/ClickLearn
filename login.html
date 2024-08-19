@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <script src="./main.js"></script>
+    <title>Log In</title>
+</head>
+<body>
+    <header></header>
+       <div class="container">
+        <div class="form-container">
+            <h1>ברוכים הבאים!</h1>
+
+            <div class="tabs">
+                <button id="loginTab" class="active" onclick="showForm('login')">התחברות</button>
+                <button id="registerTab" onclick="showForm('register')">הרשמה</button>
+            </div>
+
+            <div id="loginForm" class="form active">
+                <h2>התחברות</h2>
+                <form action="#" method="POST">
+                    <input type="text" placeholder="שם משתמש" required>
+                    <input type="password" placeholder="סיסמה" required>
+                    <button type="submit">התחבר</button>
+                </form>
+            </div>
+
+            <div id="registerForm" class="form">
+                <h2>הרשמה</h2>
+                <form action="#" method="POST">
+                    <input type="text" placeholder="שם משתמש" required>
+                    <input type="email" placeholder="אימייל" required>
+                    <input type="phone" placeholder="פלאפון" required>
+                    <input type="password" placeholder="סיסמה" required>
+                    <button type="submit">הירשם</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="./login.js"></script>
+</body>
+</html>
