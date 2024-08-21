@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@latest/dist/umd/supabase.js"></script>
+    <script>
+      console.log(typeof supabase); // אמור להחזיר 'object' אם הספרייה נטענת כראוי
+    </script>
     <script src="./main.js"></script>
+    
+    <script src="./login.js"></script>
     <title>Log In</title>
 </head>
 <body>
@@ -21,7 +27,7 @@
             <div id="loginForm" class="form active">
                 <h2>התחברות</h2>
                 <form action="#" method="POST">
-                    <input type="text" placeholder="שם משתמש" required>
+                    <input type="email" placeholder="מייל" required>
                     <input type="password" placeholder="סיסמה" required>
                     <button type="submit">התחבר</button>
                 </form>
@@ -29,11 +35,12 @@
 
             <div id="registerForm" class="form">
                 <h2>הרשמה</h2>
-                <form action="#" method="POST">
-                    <input type="text" placeholder="שם משתמש" required>
-                    <input type="email" placeholder="אימייל" required>
-                    <input type="phone" placeholder="פלאפון" required>
-                    <input type="password" placeholder="סיסמה" required>
+                <form id="signup-form" action="#" method="POST">
+                    <input type="text" id="first-name" placeholder="שם פרטי" required>
+                    <input type="text" id="last-name" placeholder="שם משפחה" required>
+                    <input type="email" id="email" placeholder="אימייל" required>
+                    <input type="phone" id="phone" placeholder="פלאפון" required>
+                    <input type="password" id="password" placeholder="סיסמה" required>
                     <button type="submit">הירשם</button>
                 </form>
             </div>

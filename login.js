@@ -1,11 +1,10 @@
-// Make sure Firebase is initialized
 document.addEventListener("DOMContentLoaded", function() {
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
     const loginTab = document.getElementById('loginTab');
     const registerTab = document.getElementById('registerTab');
 
-    function showForm(formType) {
+    window.showForm = function(formType) {
         if (formType === 'login') {
             loginForm.classList.add('active');
             registerForm.classList.remove('active');
@@ -19,61 +18,53 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    loginTab.addEventListener('click', () => showForm('login'));
-    registerTab.addEventListener('click', () => showForm('register'));
-
-    // התחברות למשתמש קיים
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
+    // רישום משתמש חדש
+    document.getElementById('signup-form').addEventListener('submit', async function(event) {
         event.preventDefault();
-        const email = document.getElementById('login-email').value;
-        const password = document.getElementById('login-password').value;
 
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                console.log("User logged in:", user.email);
-                window.location.href = 'index.html'; // Redirect on successful login
-            })
-            .catch((error) => {
-                console.error("Error logging in:", error.code, error.message);
-                alert("הייתה בעיה בהתחברות. בדוק את פרטי הכניסה ונסה שוב.");
-            });
-    });
+        const firstName = document.getElementById('first-name').value;
+        const lastName = document.getElementById('last-name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const password = document.getElementById('password').value;
 
-    // הרשמת משתמש חדש
-    document.getElementById('registerForm').addEventListener('submit', async function(event) {
-        event.preventDefault();
-        const name = document.getElementById('register-name').value;
-        const email = document.getElementById('register-email').value;
-        const phone = document.getElementById('register-phone').value;
-        const password = document.getElementById('register-password').value;
+        // ודא ש-supabase מאותחל לפני השימוש בו
+        if (!supabase) {
+            console.error('Supabase is not initialized!');
+            return;
+        }
 
-        try {
-            const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
-            const user = userCredential.user;
+        const { user, error } = await supabase.auth.signUp({
+            email: email,
+            password: password
+        });
 
-            // Add user data to Firestore
-            await firebase.firestore().collection('users').doc(user.uid).set({
-                name: name,
-                email: email,
-                phone: phone
-            });
+        if (error) {
+            console.error('Error signing up:', error.message);
+            alert('הייתה בעיה בתהליך ההרשמה. אנא נסה שוב.');
+        } else {
+            console.log('User created:', user.email);
 
-            console.log("User registered and added to Firestore:", user.email);
-            window.location.href = 'index.html'; // Redirect on successful registration
-        } catch (error) {
-            console.error("Error registering:", error.code, error.message);
-            if (error.code === 'auth/email-already-in-use') {
-                alert("המייל כבר בשימוש. נסה מייל אחר.");
-            } else if (error.code === 'auth/invalid-email') {
-                alert("כתובת המייל אינה תקינה.");
-            } else if (error.code === 'auth/weak-password') {
-                alert("הסיסמה חייבת להיות לפחות 6 תווים.");
+            const { data, insertError } = await supabase
+                .from('Users')
+                .insert([
+                    {
+                        user_id: user.id,
+                        first_name: firstName,
+                        last_name: lastName,
+                        email: email,
+                        phone: phone
+                    }
+                ]);
+
+            if (insertError) {
+                console.error('Error inserting user data:', insertError.message);
             } else {
-                alert("הייתה בעיה בהרשמה. נסה שוב מאוחר יותר.");
+                console.log('User data inserted successfully:', data);
+                window.location.href = 'index.html';
             }
         }
     });
-
-    NavBar();
 });
+
+window.addEventListener("load", NavBar);

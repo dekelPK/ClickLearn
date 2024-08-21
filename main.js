@@ -1,3 +1,19 @@
+
+console.log(typeof supabase); // אמור להחזיר 'object' אם הספרייה נטענה נכון
+
+const supabaseUrl = 'https://ldovyajmgfxxlkqtnian.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxkb3Z5YWptZ2Z4eGxrcXRuaWFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjQwNjQ1NjYsImV4cCI6MjAzOTY0MDU2Nn0.v2W6WzELJZ8Kg7XHOvw6R0ygBzXE5OtzkwIdz2hogxY';  // כאן תדביקי את ה-public-anon-key שלך
+let supabase;
+console.log(typeof supabase); // אמור להחזיר 'object' אם הספרייה נטענה נכון
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+    // הגדרת הניווט ברגע שה-DOM מוכן
+    NavBar();
+});
+
 let courses = [
   {
     name: "פיזיקה 1",
@@ -137,6 +153,3 @@ function NavBar() {
     
   
   }
-
-  
-  
