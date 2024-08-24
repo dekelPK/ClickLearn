@@ -2,6 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+const cors = require('cors');
+app.use(cors());
+
+
 // ייבוא המודלים
 const Course = require('./models/Course');
 const User = require('./models/user');
