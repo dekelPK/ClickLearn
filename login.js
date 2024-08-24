@@ -24,7 +24,7 @@
             const password = document.getElementById('password').value;
     
             // שליחת הנתונים לשרת
-            const response = await fetch('https://https://click-learn.vercel.app/api/register', {
+            const response = await fetch('https://click-learn.vercel.app/api/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
