@@ -1,21 +1,19 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
 const cors = require('cors');
-app.use(cors());
-
-
-// ייבוא המודלים
-const Course = require('./models/Course');
-const User = require('./models/user');
-const Lecture = require('./models/Lecture');
-const Exercise = require('./models/Exercise');
-const Order = require('./models/Order');
 
 // יצירת אפליקציית Express
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// הגדרת CORS
+const corsOptions = {
+    origin: 'https://click-learn.vercel.app', // הדומיין של ה-Frontend שלך
+    optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 // חיבור ל-MongoDB
 mongoose.connect('mongodb://localhost:27017/mycourses')
