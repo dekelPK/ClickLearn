@@ -3,6 +3,13 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+const Course = require('./models/Course');
+const User = require('./models/user');
+const Lecture = require('./models/Lecture');
+const Exercise = require('./models/Exercise');
+const Order = require('./models/Order');
+
+
 // יצירת אפליקציית Express
 const app = express();
 const PORT = process.env.PORT || 3000;
