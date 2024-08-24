@@ -85,6 +85,7 @@ app.post('/api/users', async (req, res) => {
 
 // נתיב לרישום משתמש חדש
 app.post('/api/register', async (req, res) => {
+    console.log('Received a request to /api/register');
     const { first_name, last_name, email, phone, password } = req.body;
 
     try {
