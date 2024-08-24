@@ -82,7 +82,7 @@ app.post('/api/users', async (req, res) => {
     await user.save();
     res.send(user);
 });
-
+    
 // נתיב לרישום משתמש חדש
 app.post('/api/register', async (req, res) => {
     console.log('Received a request to /api/register');
