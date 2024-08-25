@@ -12,7 +12,7 @@ const Order = require('./models/Order');
 
 // יצירת אפליקציית Express
 const app = express();
-const PORT = process.env.PORT || 4000;
+
 
 // הגדרת CORS
 const corsOptions = {
