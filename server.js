@@ -11,6 +11,12 @@ const User = require('./models/user.js');
 const Lecture = require('./models/Lecture.js');
 const Exercise = require('./models/Exercise.js');
 const Order = require('./models/Order.js');
+const corsOptions = {
+    origin: '*', // מתיר גישה מכל מקור
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
 
 // יצירת אפליקציית Express
 const app = express();
@@ -18,10 +24,7 @@ const app = express();
 const PORT = process.env.PORT || 3000; // Vercel יקצה פורט באמצעות process.env.PORT
 
 // הגדרת CORS
-const corsOptions = {
-    origin: 'https://click-learn.vercel.app', // הדומיין של ה-Frontend שלך
-    optionsSuccessStatus: 200
-};
+
 app.get('/', (req, res) => {
     res.send('Welcome to the API!');
 });
