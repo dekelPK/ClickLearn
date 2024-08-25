@@ -3,11 +3,14 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const Course = require('./models/Course');
-const User = require('./models/user');
-const Lecture = require('./models/Lecture');
-const Exercise = require('./models/Exercise');
-const Order = require('./models/Order');
+require('dotenv').config();
+
+
+const Course = require('./models/Course.js');
+const User = require('./models/user.js');
+const Lecture = require('./models/Lecture.js');
+const Exercise = require('./models/Exercise.js');
+const Order = require('./models/Order.js');
 
 // יצירת אפליקציית Express
 const app = express();
@@ -29,8 +32,12 @@ app.use(cors(corsOptions));
 console.log("Starting server...");
 
 mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('Could not connect to MongoDB...', err));
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch(err => {
+    console.error('Could not connect to MongoDB...', err);
+  });
 
 // שימוש ב-body-parser כדי לטפל בבקשות POST
 app.use(bodyParser.json());
