@@ -23,9 +23,15 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // חיבור ל-MongoDB
+console.log("Starting server...");
+
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Could not connect to MongoDB...', err));
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
 
 // שימוש ב-body-parser כדי לטפל בבקשות POST
 app.use(bodyParser.json());
