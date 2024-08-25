@@ -11,6 +11,8 @@ const Order = require('./models/Order');
 
 // יצירת אפליקציית Express
 const app = express();
+// הגדרת הפורט
+const PORT = process.env.PORT || 3000; // Vercel יקצה פורט באמצעות process.env.PORT
 
 // הגדרת CORS
 const corsOptions = {
@@ -114,8 +116,7 @@ app.post('/api/register', async (req, res) => {
 // תוכלי להוסיף נתיבים דומים כמו עבור קורסים ומשתמשים
 
 // הפעלת השרת
-// הגדרת הפורט
-const PORT = process.env.PORT || 3000; // Vercel יקצה פורט באמצעות process.env.PORT
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
