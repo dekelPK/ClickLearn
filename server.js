@@ -19,6 +19,9 @@ const corsOptions = {
     origin: 'https://click-learn.vercel.app', // הדומיין של ה-Frontend שלך
     optionsSuccessStatus: 200
 };
+app.get('/', (req, res) => {
+    res.send('Welcome to the API!');
+});
 
 app.use(cors(corsOptions));
 
